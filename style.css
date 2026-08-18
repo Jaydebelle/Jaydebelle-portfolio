@@ -1,1 +1,49 @@
+// ======================================
+// JAYDEBELLE WOO — PORTFOLIO
+// ======================================
 
+// Add a small shadow to the navigation when scrolling
+
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 20) {
+        navbar.style.boxShadow = "0 5px 25px rgba(50, 80, 100, 0.08)";
+    } else {
+        navbar.style.boxShadow = "none";
+    }
+
+});
+
+
+// Highlight navigation links based on the current section
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+    let currentSection = "";
+
+    sections.forEach(section => {
+
+        const sectionTop = section.offsetTop - 150;
+
+        if (window.scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.style.color = "";
+
+        if (link.getAttribute("href") === "#" + currentSection) {
+            link.style.color = "#6f9fc4";
+        }
+
+    });
+
+});
